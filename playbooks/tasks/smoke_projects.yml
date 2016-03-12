@@ -35,3 +35,6 @@
   command: "oc scale dc/smoke --replicas=2 -n {{ item }}-smoke"
   when: item not in projects.stdout
   with_sequence: start=0 end={{ num_smoke_test_users }} format=user%02d
+
+- name: Make user00 cluster-admin
+  command: "oadm policy add-cluster-role-to-user cluster-admin user00"

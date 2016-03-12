@@ -48,6 +48,14 @@
     command: "docker pull {{ item }}"
     with_items: preload_images
 
+- name: Create persistent folder for docker regsitry
+  hosts: oo_infra_nodes
+  tasks:
+  - name: Create persistent folder
+    command: "mkdir -p /mnt/docker"
+  - name: Set permissions for the folder
+    command: "chmod -R 777 /mnt/docker"
+
 - name: First master post config
   hosts: oo_first_master
   vars_files:
@@ -103,9 +111,9 @@
     command: oadm registry --dry-run
     register: registry_out
     ignore_errors: true
-
+    
   - name: Install registry
-    command: "oadm registry --credentials=/etc/origin/master/openshift-registry.kubeconfig --images='{{ registry_image_url }}'"
+    command: "oadm registry --credentials=/etc/origin/master/openshift-registry.kubeconfig --images='{{ registry_image_url }}' --service-account=registry --mount-host=/mnt/docker"
     when: registry_out | failed
 
   - name: Find current projects list
