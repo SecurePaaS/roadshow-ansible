@@ -63,7 +63,7 @@ It can also be used to stand up your own environment running the demo from the
 
   ```
   git clone https://github.com/kenthua/roadshow-ansible.git -b roadshow
-  git clone https://github.com/openshift/openshift-ansible.git -b openshift-ansible-3.0.37-1
+  git clone https://github.com/openshift/openshift-ansible.git -b openshift-ansible-3.0.63-1
   ```
 - Before running run.py, associate your private AWS pem key keypair
   - Ensure your keypair has the proper permissions
