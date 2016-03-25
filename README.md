@@ -6,7 +6,7 @@ It can also be used to stand up your own environment running the demo from the
 [2015 JBoss Middleware Keynote](https://www.youtube.com/watch?v=wWNVpFibayA) at Red Hat Summit. 
  
 
-## Prerequisites
+## AWS Prerequisites
 
 - An AWS account with permissions to do the following:
   - Create and modify a VPC (A VPC is created for each cluster-id)
@@ -50,20 +50,48 @@ It can also be used to stand up your own environment running the demo from the
   ssh -i keypair.pem openshift@ec2-xxxx.compute-1.amazonaws.com
   ```
 
-## Requirements
-
+## System Requirements
+- Use RHEL 7, other linux instances didn't work.
+- Install pip (python should be installed OOTB)
+  ```
+  [root@rhel7 ~]# wget https://pypi.python.org/packages/source/s/setuptools/setuptools-7.0.tar.gz --no-check-certificate
+  [root@rhel7 ~]# tar xzf setuptools-7.0.tar.gz
+  [root@rhel7 ~]# cd setuptools-7.0
+  [root@rhel7 ~]# python setup.py install
+  ...
+  Installed /usr/lib/python2.7/site-packages/setuptools-7.0-py2.7.egg
+  Processing dependencies for setuptools==7.0
+  Finished processing dependencies for setuptools==7.0  
+  
+  [root@rhel7 ~]# wget https://bootstrap.pypa.io/get-pip.py
+  [root@rhel7 ~]# python get-pip.py
+  Downloading/unpacking pip
+    Downloading pip-1.5.6-py2.py3-none-any.whl (1.0MB): 1.0MB downloaded
+  Installing collected packages: pip
+  Successfully installed pip
+  Cleaning up...
+  ```
 - [Ansible](https://github.com/ansible/ansible) version 1.9.4
   - v2.0+ may not work, errors may occur upon initial run
+  ```
+  [root@rhel7 ~]# pip install ansible==1.9.4
+  ```
 - [Click](https://github.com/mitsuhiko/click) version 3.0 or greater
-  - Available in Fedora and EPEL channels as python-click
+  ```
+  [root@rhel7 ~]# pip install click==3.0
+  ```
 - [Boto](https://github.com/boto/boto) 
+  ```
+  [root@rhel7 ~]# pip install boto
+  
+  ```
 - The master branch of
     [openshift/openshift-ansible](https://github.com/openshift/openshift-ansible)
     is expected to be a sibling repo to the demo-ansible repo
 
   ```
-  git clone https://github.com/kenthua/roadshow-ansible.git -b roadshow
-  git clone https://github.com/openshift/openshift-ansible.git -b openshift-ansible-3.0.63-1
+  git clone https://github.com/securepaas/roadshow-ansible.git -b roadshow
+  git clone https://github.com/openshift/openshift-ansible.git
   ```
 - Before running run.py, associate your private AWS pem key keypair
   - Ensure your keypair has the proper permissions
