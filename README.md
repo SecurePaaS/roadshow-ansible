@@ -77,6 +77,7 @@ It can also be used to stand up your own environment running the demo from the
   [root@rhel7 ~]# pip install ansible==1.9.4
   ```
 - [Click](https://github.com/mitsuhiko/click) version 3.0 or greater
+
   ```
   [root@rhel7 ~]# pip install click==3.0
   ```
