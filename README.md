@@ -52,6 +52,11 @@ It can also be used to stand up your own environment running the demo from the
 
 ## System Requirements
 - Use RHEL 7, other linux instances didn't work.
+- Ensure your machine is entitled with a standard subscription, if centos install EPEL
+- Install python 2.7 (should be the default in the yum repo)
+  ```
+  [root@rhel7 ~]# yum install python
+  ```
 - Install pip (python should be installed OOTB)
   ```
   [root@rhel7 ~]# wget https://pypi.python.org/packages/source/s/setuptools/setuptools-7.0.tar.gz --no-check-certificate
