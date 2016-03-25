@@ -113,30 +113,6 @@ Host *.us-west-1.compute.amazonaws.com
 ssh-add keypair.pem
 ```
 
-
-**RHEL6, does NOT work**  
-
-
-## OSX additional requirements
-- Upgrade `pip` if necessary and install dependencies `click` and `boto`
-```
-sudo pip install --upgrade pip
-sudo pip install click
-sudo pip install boto
-```
-- **Modify** `roadshow-ansible/inventory/aws/hosts/ec2.py` 
-```
-#!/usr/bin/env python2 -> #!/usr/bin/env python
-```
-- **Modify** `openshift-ansible/roles/os_firewall_tasks/firewall/iptables.yml` **- 10 seconds may not be enough, increase this if you get an error during this task**
-```
-name: need to pause here, otherwise the iptables service starting can sometimes cause ssh to fail
-from
-pause: seconds=10
-to
-pause: seconds=20
-```
-
 ## OpenShift notes
 - If you need to change the OpenShift Enterprise version to deploy, you must edit the `roadshow-ansible/playbooks/openshift_setup.yml`  It's yaml so be conscious of spacing.
   - Under the section: `Add the created hosts to groups for configuration` modify two lines with the variable named `openshift_pkg_version`.  This was added to the original `openshift_setup.yml`.
