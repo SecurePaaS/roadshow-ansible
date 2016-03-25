@@ -54,6 +54,7 @@ It can also be used to stand up your own environment running the demo from the
 - Use RHEL 7, other linux instances didn't work.
 - Ensure your machine is entitled with a standard subscription, if centos install EPEL
 - Install python 2.7 (should be the default in the yum repo)
+
   ```
   [root@rhel7 ~]# yum install python
   ```
